@@ -1,0 +1,62 @@
+{% extends 'musiccollection/base.html' %}
+{% block head %}
+	{% load staticfiles %}
+{% endblock%}
+
+{% block body %}
+
+	<div class="container-fluid work" id="work" ng-controller="UserLoginController">
+		<div class="container">
+			<div class="row" id="starts">
+				<div class="col-md-12 col-sm-12 col-xs-12 work-list no-padding">
+					<form class="form-signin"  method="post">{% csrf_token %}
+						<h4 class="text-center portfolio-text">Log In/Sign Up</h4>
+						<div class="alert alert-danger" id="fail">
+                          <button class="close" data-dismiss="alert"></button>
+                          {[{error}]}
+                      	</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 work-space">
+							<input type="text" name="username" class="form-control" placeholder="Username" required autofocus ng-model="data.username">
+			                <input type="password" name="password" class="form-control" placeholder="Password" required ng-model="data.password"><br>
+							<button class="btn btn-lg  btn-block" type="submit" ng-click="login(data)">
+								<a href="#">
+		                			<h3>Log In</h3>
+		                		</a>
+		                	</button>
+						</div>
+					</form>
+					<form class="form-signup" method="post">{% csrf_token %}
+						<div class="col-md-8 col-sm-6 col-xs-12 work-space">
+							<div class="col-md-4 col-sm-6 col-xs-12 work-space">
+								<label>Name
+							</div>
+							<div class="col-md-8 col-sm-6 col-xs-12 work-space">
+								<input type="text" name="name" class="form-control" placeholder="Name" required ng-model="signup_data.name">
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-12 work-space">
+								<label>Username
+							</div>
+							<div class="col-md-8 col-sm-6 col-xs-12 work-space">
+								<input type="text" name="username" class="form-control" placeholder="Username" required autofocus ng-model="signup_data.username">
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-12 work-space">
+								<label>Password
+							</div>
+							<div class="col-md-8 col-sm-6 col-xs-12 work-space">
+								<input type="password" name="password" class="form-control" placeholder="Password" required ng-model="signup_data.password">
+							</div>
+							<input type="hidden" class="form-control" name="signup"/>
+			                <div class="col-md-12 col-sm-6 col-xs-12 work-space">
+			                	<button class="btn btn-lg  btn-block" type="submit" ng-click="signup(signup_data)">
+								<a href="#">
+		                			<h3>Sign Up</h3>
+		                		</a>
+		                	</button>
+			                </div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock%}
